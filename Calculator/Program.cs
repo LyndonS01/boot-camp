@@ -28,7 +28,7 @@ namespace Calculator
             break;
 
           default:
-            System.Environment.Exit(0);
+            Environment.Exit(0);
             break;
         }
 
