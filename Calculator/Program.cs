@@ -50,22 +50,22 @@ namespace Calculator
         {
           case "1": 
             var sum = operand1 + operand2;
-            System.Console.WriteLine($"Your answer is: {sum}\n");
+            Console.WriteLine($"Your answer is: {sum}\n");
             break;
 
           case "2": 
             var diff = operand1 - operand2;
-            System.Console.WriteLine($"Your answer is: {diff}\n");
+            Console.WriteLine($"Your answer is: {diff}\n");
             break;
 
           case "3": 
             var prod = operand1 * operand2;
-            System.Console.WriteLine($"Your answer is: {prod}\n");
+            Console.WriteLine($"Your answer is: {prod}\n");
             break;
           
           case "4": 
             var div = operand1 / operand2;
-            System.Console.WriteLine($"Your answer is: {div}\n");
+            Console.WriteLine($"Your answer is: {div}\n");
             break;
             
           default:
