@@ -4,9 +4,18 @@ namespace HelloCsharp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+          Console.Write("Enter firstname: ")
+          var firstName = Console.ReadLine();
+          Console.Write("Enter lastname: ");
+          string lastName = Console.ReadLine();
+
+          Console.WriteLine(firstName + " " + lastName);
+          Console.WriteLine("{0} {1}", firstName, lastName);
+          Console.WriteLine($"{firstName} {lastName}";
+
+          Console.ReadLine();
         }
     }
 }
