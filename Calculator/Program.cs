@@ -37,40 +37,33 @@ namespace Calculator
         Console.WriteLine("Enter 2nd operand");
         string input2 = Console.ReadLine();
 
-        double operand1, operand2;
+        double operand1, operand2, result;
         double.TryParse(input1, out operand1);
         double.TryParse(input2, out operand2);
-        compute(choice, operand1, operand2, stay);
+
+        result = compute(choice, operand1, operand2);
+        Console.WriteLine($"The answer is: {result}\n");
         
       }
 
-      static void compute(string choice, double operand1, double operand2, bool stay)
+      static double compute(string choice, double operand1, double operand2)
       {
         switch(choice)
         {
           case "1": 
-            var sum = operand1 + operand2;
-            Console.WriteLine($"Your answer is: {sum}\n");
-            break;
+            return (operand1 + operand2);
 
           case "2": 
-            var diff = operand1 - operand2;
-            Console.WriteLine($"Your answer is: {diff}\n");
-            break;
+            return (operand1 - operand2);
 
           case "3": 
-            var prod = operand1 * operand2;
-            Console.WriteLine($"Your answer is: {prod}\n");
-            break;
+            return (operand1 * operand2);
           
           case "4": 
-            var div = operand1 / operand2;
-            Console.WriteLine($"Your answer is: {div}\n");
-            break;
+            return (operand1 / operand2);
             
           default:
-            stay = false;
-            break;
+            return (0);
         }
       } 
     }
