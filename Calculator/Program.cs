@@ -28,8 +28,8 @@ namespace Calculator
             break;
 
           default:
-            Environment.Exit(0);
-            break;
+            stay = false;
+            continue;
         }
 
         Console.WriteLine("Enter 1st operand");
