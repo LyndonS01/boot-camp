@@ -6,16 +6,5 @@
         <string>cheese</string>
       </Toppings>
     </Pizza>
-    <Pizza>
-      <Toppings>
-        <string>cheese</string>
-        <string>pepperoni</string>
-      </Toppings>
-    </Pizza>
-    <Pizza>
-      <Toppings>
-        <string>none selected</string>
-      </Toppings>
-    </Pizza>
   </Pizzas>
 </Order>

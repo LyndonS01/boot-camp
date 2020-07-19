@@ -17,33 +17,9 @@ namespace PizzaStore.Client
       System.Console.WriteLine("Best Pizza in the World");
       System.Console.WriteLine();
 
-      // array
-      //1-dimensional
-      string[] cart1 = { "", "", "" }; // initial values
-      string[] cart2 = new string[3]; // default values
-      string[] cart3 = new[] { "", "", "" }; // initial values - custom datatypes or earlier C# versions
-
-      // list
-      List<string> cart4 = new List<string> { "", "", "" }; // initial values
-      List<string> cart5 = new List<string>(); // default values
-      List<Pizza> cart6 = new List<Pizza>();
-
-      //Menu(cart2);
-      //Menu2(cart6);
-
       var starter = new Starter();
       var user = new User();
       var store = new Store();
-
-      //var order = startup.CreateOrder(user, store);
-      // if (order != null)
-      // {
-      //   Menu3(order);
-      // }
-      // else
-      // {
-      //   System.Console.WriteLine("technical difficulties, we be back!");
-      // }
 
       try
       {
@@ -55,199 +31,143 @@ namespace PizzaStore.Client
       }
     }
 
-    // static void Menu(string[] cart)
-    // {
-    //   var exit = false;
-    //   var number = 0;
-
-    //   do
-    //   {
-    //     if (number < cart.Length)
-    //     {
-    //       System.Console.WriteLine("Select 1 for Cheese Pizza");
-    //       System.Console.WriteLine("Select 2 for Pepperoni Pizza");
-    //       System.Console.WriteLine("Select 3 for Pineapple Pizza");
-    //       System.Console.WriteLine("Select 4 for Custom Pizza");
-    //       System.Console.WriteLine("Select 5 for Show Cart");
-    //       System.Console.WriteLine("Select 6 for Exit");
-    //       System.Console.WriteLine();
-
-    //       int select;
-
-    //       int.TryParse(Console.ReadLine(), out select);
-
-    //       switch (select)
-    //       {
-    //         case 1:
-    //           cart[number] = "cheese";
-    //           number += 1;
-    //           System.Console.WriteLine("added Cheese");
-    //           break;
-    //         case 2:
-    //           cart[number] = "pepperoni";
-    //           number += 1;
-    //           System.Console.WriteLine("added Pepperoni");
-    //           break;
-    //         case 3:
-    //           cart[number] = "pineapple";
-    //           number += 1;
-    //           System.Console.WriteLine("added Pineapple");
-    //           break;
-    //         case 4:
-    //           cart[number] = "custom";
-    //           number += 1;
-    //           System.Console.WriteLine("added Custom");
-    //           break;
-    //         case 5:
-    //           DisplayCart(cart);
-    //           break;
-    //         case 6:
-    //           System.Console.WriteLine("thank you, goodbye!");
-    //           exit = true;
-    //           break;
-    //       }
-    //     }
-    //     else
-    //     {
-    //       DisplayCart(cart);
-    //       exit = true;
-    //     }
-    //   } while (!exit);
-    // }
-
-    // static void Menu2(List<Pizza> cart)
-    // {
-    //   var exit = false;
-    //   var number = 0;
-    //   var startup = new PizzaStore.Client.Startup();
-
-    //   do
-    //   {
-    //     if (number < 10)
-    //     {
-    //       System.Console.WriteLine("Select 1 for Cheese Pizza");
-    //       System.Console.WriteLine("Select 2 for Pepperoni Pizza");
-    //       System.Console.WriteLine("Select 3 for Pineapple Pizza");
-    //       System.Console.WriteLine("Select 4 for Custom Pizza");
-    //       System.Console.WriteLine("Select 5 for Show Cart");
-    //       System.Console.WriteLine("Select 6 for Exit");
-    //       System.Console.WriteLine();
-
-    //       int select;
-
-    //       int.TryParse(Console.ReadLine(), out select);
-
-    //       switch (select)
-    //       {
-    //         case 1:
-    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"cheese"}));
-    //           number += 1;
-    //           System.Console.WriteLine("added Cheese");
-    //           break;
-    //         case 2:
-    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"pepperoni"}));
-    //           number += 1;
-    //           System.Console.WriteLine("added Pepperoni");
-    //           break;
-    //         case 3:
-    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"pineapple"}));
-    //           number += 1;
-    //           System.Console.WriteLine("added Pineapple");
-    //           break;
-    //         case 4:
-    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"custom"}));
-    //           number += 1;
-    //           System.Console.WriteLine("added Custom");
-    //           break;
-    //         case 5:
-    //           DisplayCart2(cart);
-    //           break;
-    //         case 6:
-    //           System.Console.WriteLine("thank you, goodbye!");
-    //           exit = true;
-    //           break;
-    //       }
-    //     }
-    //     else
-    //     {
-    //       DisplayCart2(cart);
-    //       exit = true;
-    //     }
-
-    //     System.Console.WriteLine();
-    //   } while (!exit);
-    // }
-
-    // static void DisplayCart(string[] cart)
-    // {
-    //   foreach (var pizza in cart)
-    //   {
-    //     System.Console.WriteLine(pizza);
-    //   }
-    // }
-
-    // static void DisplayCart2(List<Pizza> cart)
-    // {
-    //   foreach (var pizza in cart)
-    //   {
-    //     System.Console.WriteLine(pizza);
-    //   }
-    // }
 
     static void Menu(Order cart)
     {
-      var exit = false;
+      bool exit = false;
+      // List<string> toppings = new List<string>();         // Ask for the type of pizza
 
-      do
+      while (!exit)
       {
-        Starter.PrintMenu();
+         List<string> toppings = new List<string>(); 
+         string pizzaType = GetPizzaType(cart, toppings, ref exit);
+        // System.Console.WriteLine($"Exited GetPizzaType with pizzaType = {pizzaType}");
+        // if (exit) break;
 
-        int select;
-
-        int.TryParse(Console.ReadLine(), out select);
-
-        switch (select)
+        var pizzaSize = "";
+        if (pizzaType != "")
         {
-          case 1:
-            cart.CreatePizza("L", "Stuffed", new List<string> { "cheese" });
-            System.Console.WriteLine("added Cheese");
-            break;
-          case 2:
-            cart.CreatePizza("L", "Stuffed", new List<string> { "pepperoni" });
-            System.Console.WriteLine("added Pepperoni");
-            break;
-          case 3:
-            cart.CreatePizza("L", "Stuffed", new List<string> { "pineapple" });
-            System.Console.WriteLine("added Pineapple");
-            break;
-          case 4:
-            cart.CreatePizza("L", "Stuffed", new List<string> { "custom" });
-            System.Console.WriteLine("added Custom");
-            break;
-          case 5:
-            DisplayCart(cart);
-            break;
-          case 6:
-            var fmw = new FileManager();
-            fmw.Write(cart);
-            System.Console.WriteLine("thank you, goodbye!");
-            exit = true;
-            break;
-          case 7:
-            var fmr = new FileManager();
-            DisplayCart(fmr.Read());
-            break;
+          pizzaSize = GetPizzaSize(cart, ref exit);                     // Ask for the size of pizza
+
+          System.Console.WriteLine($"Pizza type is {pizzaType}, size = {pizzaSize}, toppings = {toppings}");
+          // foreach (var t in toppings)
+          // {
+          //   System.Console.WriteLine(t + " ");
+          // }
+
+          cart.CreatePizza(pizzaSize, "Stuffed", toppings);   // add the pizza to the order
+
+          System.Console.WriteLine($"We added a {pizzaSize} {pizzaType} pizza to your order");
         }
 
-        System.Console.WriteLine();
-      } while (!exit);
-    }
+      }
 
-    static void DisplayCart(Order cart)
-    {
-      foreach (var pizza in cart.Pizzas)
+      static void DisplayCart(Order cart)
       {
-        System.Console.WriteLine(pizza);
+        foreach (var pizza in cart.Pizzas)
+        {
+          System.Console.WriteLine(pizza);
+        }
+      }
+
+      static string GetPizzaType(Order cart, List<string> toppings, ref bool exit)
+      {
+        var exit1 = false;
+        string typeSelected = "";
+        var pizzaTypes = new string[] { "Cheese", "Pepperoni", "Hawaiian", "Custom" };
+
+        do
+        {
+
+          Starter.PrintMenu();
+
+          int selection;
+
+          int.TryParse(Console.ReadLine(), out selection);
+
+          switch (selection)
+          {
+            case 1: // Cheese
+              toppings.Add("cheese");
+              typeSelected = pizzaTypes[selection - 1];
+              System.Console.WriteLine($"You chose {typeSelected}");
+              break;
+            case 2: // Pepperoni
+              toppings.Add("cheese");
+              toppings.Add("pepperoni");
+              typeSelected = pizzaTypes[selection - 1];
+              System.Console.WriteLine($"You chose {typeSelected}");
+              break;
+            case 3: // Hawaiian
+              toppings.Add("cheese");
+              toppings.Add("ham");
+              toppings.Add("pineapple");
+              typeSelected = pizzaTypes[selection - 1];
+              System.Console.WriteLine($"You chose {typeSelected}");
+              break;
+            case 4: // Custom
+              toppings.Add("none selected");
+              typeSelected = pizzaTypes[selection - 1];
+              System.Console.WriteLine($"You chose {typeSelected}");
+              break;
+            case 5:
+              DisplayCart(cart);
+              continue;
+            case 6:
+              var fmw = new FileManager();
+              fmw.Write(cart);
+              System.Console.WriteLine("Thank you for your order. Goodbye!");
+              exit = true;
+              break;
+            default:
+              break;
+              // case 7:
+              //   var fmr = new FileManager();
+              //   DisplayCart(fmr.Read());
+              //   continue;
+          }
+          System.Console.WriteLine();
+          exit1 = true;
+        } while (!exit1);
+
+        return typeSelected;
+      }
+
+      static string GetPizzaSize(Order cart, ref bool exit)
+      {
+        var exit1 = false;
+        var selection = 0;
+        var sizeSelected = "";
+
+        while (!exit && !exit1)
+        {
+          Starter.ChooseSize();
+
+          int.TryParse(Console.ReadLine(), out selection);
+
+          switch (selection)
+          {
+            case 1:
+              sizeSelected = "Family";
+              System.Console.WriteLine($"You chose {sizeSelected}");
+              exit1 = true;
+              break;
+            case 2:
+              sizeSelected = "Large";
+              System.Console.WriteLine($"You chose {sizeSelected}");
+              exit1 = true;
+              break;
+            case 3:
+              sizeSelected = "Regular";
+              System.Console.WriteLine($"You chose {sizeSelected}");
+              exit1 = true;
+              break;
+            default:
+              continue;
+          }
+
+        } 
+        return sizeSelected;
       }
     }
   }

@@ -8,13 +8,18 @@ namespace PizzaStore.Domain.Models
     // STATE
     //fields
     private readonly string _imageUrl = "https://some-url";
-    private const double _diameter = 0;
-    private static string _name = "pizza";
+    // private const double _diameter = 0;
+    private Dictionary<string, double> Sizes = new Dictionary<string, double>(); //Size and corresponding diameter in inches
+
     private List<string> _toppings = new List<string>();
 
     //properties
     public string Crust { get; }
     public string Size { get; } // size
+    public const double _sizeFamily = 16.0;
+    public const double _sizeLarge = 12.0;
+    public const double _sizeRegular = 10.0;
+    public double Diameter { get; } // in inches
     public List<string> Toppings
     {
       get
@@ -27,7 +32,11 @@ namespace PizzaStore.Domain.Models
     //constructors
     public Pizza(string size, string crust, List<string> toppings)
     {
+      Sizes.Add("Regular", _sizeRegular);
+      Sizes.Add("Large", _sizeLarge);
+      Sizes.Add("Family", _sizeFamily);
       Size = size;
+      Diameter = Sizes[size];
       Crust = crust;
       Toppings.AddRange(toppings);
     }
@@ -36,6 +45,7 @@ namespace PizzaStore.Domain.Models
     {
       Size = "";
       Crust = "";
+      Diameter = 0.0;
       // intentionally empty
     }
 
@@ -48,13 +58,35 @@ namespace PizzaStore.Domain.Models
     public override string ToString()
     {
       var sb = new StringBuilder();
+      var j = Toppings.Count;
 
-      foreach(var t in Toppings)
+      for (var i = Toppings.Count - 1; i >= 0; i--)
       {
-        sb.Append(t + ", ");
+        if (i > 0)
+        {
+          sb.Append(Toppings[i] + ", ");
+        }
+        else
+        {
+          if (j == 1)
+          {
+            sb.Append(Toppings[i]);
+          }
+          else
+          {
+            sb.Append("and " + Toppings[i]);
+          }
+        }
+
       }
 
-      return $"{Crust} \n{Size} \n{sb}";
+      // foreach (var t in Toppings)
+      // {
+      //   sb.Append(t + ", ");
+      // }
+
+      return $"{Size} ({Diameter} in.), {Crust}, Pizza. Toppings incl.: {sb}";
+      // return $"{Size}, {Crust}, Pizza. Toppings incl.: {sb}";
     }
 
     //finalizers or destructors

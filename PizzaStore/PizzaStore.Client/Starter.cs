@@ -28,14 +28,22 @@ namespace PizzaStore.Client
       }
     }
 
-    internal static void PrintMenu()
+    public static void PrintMenu()
     {
       System.Console.WriteLine("Select 1 for Cheese Pizza");
       System.Console.WriteLine("Select 2 for Pepperoni Pizza");
-      System.Console.WriteLine("Select 3 for Pineapple Pizza");
+      System.Console.WriteLine("Select 3 for Hawaiian Pizza");
       System.Console.WriteLine("Select 4 for Custom Pizza");
       System.Console.WriteLine("Select 5 for Show Cart");
-      System.Console.WriteLine("Select 6 for Exit");
+      System.Console.WriteLine("Select 6 to  Save your Order & Exit");
+      System.Console.WriteLine();
+    }
+    
+    public static void ChooseSize()
+    {
+      System.Console.WriteLine("Select 1 for Family");
+      System.Console.WriteLine("Select 2 for Large");
+      System.Console.WriteLine("Select 3 for Regular");
       System.Console.WriteLine();
     }
   }
