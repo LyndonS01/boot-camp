@@ -35,14 +35,12 @@ namespace PizzaStore.Client
     static void Menu(Order cart)
     {
       bool exit = false;
-      // List<string> toppings = new List<string>();         // Ask for the type of pizza
-
+      
       while (!exit)
       {
-         List<string> toppings = new List<string>(); 
-         string pizzaType = GetPizzaType(cart, toppings, ref exit);
-        // System.Console.WriteLine($"Exited GetPizzaType with pizzaType = {pizzaType}");
-        // if (exit) break;
+        List<string> toppings = new List<string>();
+
+        string pizzaType = GetPizzaType(cart, toppings, ref exit);
 
         var pizzaSize = "";
         if (pizzaType != "")
@@ -50,10 +48,6 @@ namespace PizzaStore.Client
           pizzaSize = GetPizzaSize(cart, ref exit);                     // Ask for the size of pizza
 
           System.Console.WriteLine($"Pizza type is {pizzaType}, size = {pizzaSize}, toppings = {toppings}");
-          // foreach (var t in toppings)
-          // {
-          //   System.Console.WriteLine(t + " ");
-          // }
 
           cart.CreatePizza(pizzaSize, "Stuffed", toppings);   // add the pizza to the order
 
@@ -74,7 +68,16 @@ namespace PizzaStore.Client
       {
         var exit1 = false;
         string typeSelected = "";
+
+        // define available Pizza Types
         var pizzaTypes = new string[] { "Cheese", "Pepperoni", "Hawaiian", "Custom" };
+
+        // define standard stopping sets for the above Pizza Types
+        Dictionary<string, List<string>> ts = new Dictionary<string, List<string>>();
+        ts.Add("Cheese", new List<string> { "cheese" });
+        ts.Add("Pepperoni", new List<string> { "cheese", "pepperoni" });
+        ts.Add("Hawaiian", new List<string> { "cheese", "ham", "pineapple" });
+        ts.Add("Custom", new List<string> { "" });
 
         do
         {
@@ -88,25 +91,22 @@ namespace PizzaStore.Client
           switch (selection)
           {
             case 1: // Cheese
-              toppings.Add("cheese");
+              toppings.AddRange(ts["Cheese"]);
               typeSelected = pizzaTypes[selection - 1];
               System.Console.WriteLine($"You chose {typeSelected}");
               break;
             case 2: // Pepperoni
-              toppings.Add("cheese");
-              toppings.Add("pepperoni");
+              toppings.AddRange(ts["Pepperoni"]);
               typeSelected = pizzaTypes[selection - 1];
               System.Console.WriteLine($"You chose {typeSelected}");
               break;
             case 3: // Hawaiian
-              toppings.Add("cheese");
-              toppings.Add("ham");
-              toppings.Add("pineapple");
+              toppings.AddRange(ts["Hawaiian"]);
               typeSelected = pizzaTypes[selection - 1];
               System.Console.WriteLine($"You chose {typeSelected}");
               break;
             case 4: // Custom
-              toppings.Add("none selected");
+              toppings.AddRange(ts["Custom"]);
               typeSelected = pizzaTypes[selection - 1];
               System.Console.WriteLine($"You chose {typeSelected}");
               break;
@@ -119,15 +119,17 @@ namespace PizzaStore.Client
               System.Console.WriteLine("Thank you for your order. Goodbye!");
               exit = true;
               break;
+            case 7:
+              var fmr = new FileManager();
+              DisplayCart(fmr.Read());
+              break;
             default:
               break;
-              // case 7:
-              //   var fmr = new FileManager();
-              //   DisplayCart(fmr.Read());
-              //   continue;
           }
+
           System.Console.WriteLine();
           exit1 = true;
+        
         } while (!exit1);
 
         return typeSelected;
@@ -166,7 +168,7 @@ namespace PizzaStore.Client
               continue;
           }
 
-        } 
+        }
         return sizeSelected;
       }
     }

@@ -2,19 +2,20 @@
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Pizzas>
     <Pizza>
+      <Size>Large</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>12</Diameter>
       <Toppings>
         <string>cheese</string>
       </Toppings>
     </Pizza>
     <Pizza>
+      <Size>Regular</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>10</Diameter>
       <Toppings>
         <string>cheese</string>
         <string>pepperoni</string>
-      </Toppings>
-    </Pizza>
-    <Pizza>
-      <Toppings>
-        <string>none selected</string>
       </Toppings>
     </Pizza>
   </Pizzas>

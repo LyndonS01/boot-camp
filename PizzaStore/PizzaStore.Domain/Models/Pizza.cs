@@ -13,13 +13,16 @@ namespace PizzaStore.Domain.Models
 
     private List<string> _toppings = new List<string>();
 
+
+    // private string _size;
+
     //properties
-    public string Crust { get; }
-    public string Size { get; } // size
+    public string Size { get; set; }
+    public string Crust { get; set; }
     public const double _sizeFamily = 16.0;
     public const double _sizeLarge = 12.0;
     public const double _sizeRegular = 10.0;
-    public double Diameter { get; } // in inches
+    public double Diameter { get; set; } // in inches
     public List<string> Toppings
     {
       get
