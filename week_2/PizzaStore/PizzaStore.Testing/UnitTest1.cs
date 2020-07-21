@@ -8,7 +8,7 @@ namespace PizzaStore.Testing
         [Fact]
         public void Test1()
         {
-
+          Console.WriteLine("this is a test");
         }
     }
 }
