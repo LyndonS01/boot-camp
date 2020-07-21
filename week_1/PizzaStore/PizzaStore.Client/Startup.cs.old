@@ -1,0 +1,17 @@
+using System.Collections.Generic;
+using PizzaStore.Domain.Models;
+
+namespace PizzaStore.Client
+{
+  internal class Startup
+  {
+    internal void CreateOrder(User user1, Store store)
+    {
+      var order = new Order();
+
+      user.Orders.Add(order);
+      store.Orders.Add(order);
+
+    }
+  }
+}
