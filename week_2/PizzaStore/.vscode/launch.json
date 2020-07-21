@@ -10,11 +10,11 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/PizzaStore.Client/bin/Debug/netcoreapp3.1/PizzaStore.Client.dll",
+            "program": "${workspaceFolder}/PizzaStore.Testing/bin/Debug/netcoreapp3.1/PizzaStore.Testing.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/PizzaStore.Client",
+            "cwd": "${workspaceFolder}/PizzaStore.Testing",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "integratedTerminal",
+            "console": "internalConsole",
             "stopAtEntry": false
         },
         {
