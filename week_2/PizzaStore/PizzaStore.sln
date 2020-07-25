@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaStore.Storing", "Pizza
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaStore.Testing", "PizzaStore.Testing\PizzaStore.Testing.csproj", "{4A9988F0-AC62-4931-BE82-5AC3F1EA0758}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaStore.Client", "PizzaStore.Client\PizzaStore.Client.csproj", "{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{4A9988F0-AC62-4931-BE82-5AC3F1EA0758}.Release|x64.Build.0 = Release|Any CPU
 		{4A9988F0-AC62-4931-BE82-5AC3F1EA0758}.Release|x86.ActiveCfg = Release|Any CPU
 		{4A9988F0-AC62-4931-BE82-5AC3F1EA0758}.Release|x86.Build.0 = Release|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Debug|x64.Build.0 = Debug|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Debug|x86.Build.0 = Debug|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Release|x64.ActiveCfg = Release|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Release|x64.Build.0 = Release|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Release|x86.ActiveCfg = Release|Any CPU
+		{8B4EAD24-A32E-4276-9C43-B8D1CA3C5C87}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
