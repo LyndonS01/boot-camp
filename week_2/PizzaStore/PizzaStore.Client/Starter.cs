@@ -47,5 +47,12 @@ namespace PizzaStore.Client
       System.Console.WriteLine("Select 3 for Regular");
       System.Console.WriteLine();
     }
+        public static void MgmtMenu()
+    {
+      System.Console.WriteLine("Select 1 for Sales History");
+      System.Console.WriteLine("Select 2 for Order History");
+      System.Console.WriteLine("Press any other key to exit");
+      System.Console.WriteLine();
+    }
   }
 }
