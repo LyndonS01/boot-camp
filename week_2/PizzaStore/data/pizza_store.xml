@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Pizzas />
+  <Pizzas>
+    <Pizza>
+      <Size>Large</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>12</Diameter>
+      <Toppings>
+        <string>cheese</string>
+        <string>ham</string>
+        <string>pineapple</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Size>Regular</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>10</Diameter>
+      <Toppings>
+        <string>cheese</string>
+        <string>pepperoni</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Size>Family</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>16</Diameter>
+      <Toppings>
+        <string>cheese</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Size>Regular</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>10</Diameter>
+      <Toppings>
+        <string>sausage</string>
+        <string>mushrooms</string>
+      </Toppings>
+    </Pizza>
+  </Pizzas>
 </Order>
