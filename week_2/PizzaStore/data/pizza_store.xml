@@ -2,9 +2,26 @@
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Pizzas>
     <Pizza>
+      <Size>Family</Size>
+      <Crust>Thin</Crust>
+      <Diameter>16</Diameter>
+      <Toppings>
+        <string>cheese</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
       <Size>Large</Size>
-      <Crust>Stuffed</Crust>
+      <Crust>Thick</Crust>
       <Diameter>12</Diameter>
+      <Toppings>
+        <string>cheese</string>
+        <string>pepperoni</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Size>Regular</Size>
+      <Crust>Stuffed</Crust>
+      <Diameter>10</Diameter>
       <Toppings>
         <string>cheese</string>
         <string>ham</string>
@@ -12,29 +29,15 @@
       </Toppings>
     </Pizza>
     <Pizza>
-      <Size>Regular</Size>
-      <Crust>Stuffed</Crust>
-      <Diameter>10</Diameter>
-      <Toppings>
-        <string>cheese</string>
-        <string>pepperoni</string>
-      </Toppings>
-    </Pizza>
-    <Pizza>
       <Size>Family</Size>
-      <Crust>Stuffed</Crust>
+      <Crust>Thick</Crust>
       <Diameter>16</Diameter>
       <Toppings>
-        <string>cheese</string>
-      </Toppings>
-    </Pizza>
-    <Pizza>
-      <Size>Regular</Size>
-      <Crust>Stuffed</Crust>
-      <Diameter>10</Diameter>
-      <Toppings>
-        <string>sausage</string>
+        <string>bacon</string>
         <string>mushrooms</string>
+        <string>bell peppers</string>
+        <string>sausage</string>
+        <string>cheese (extra)</string>
       </Toppings>
     </Pizza>
   </Pizzas>

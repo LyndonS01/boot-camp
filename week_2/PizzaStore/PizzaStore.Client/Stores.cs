@@ -24,19 +24,33 @@ namespace PizzaStore.Client
           switch (selection)
           {
             case 1: // Sales History
+              SalesHistory();
               break;
             case 2: // Order History
+              OrderHistory();
               break;
             default:
               exit = true;
-              break;
+              continue;
           }
 
           System.Console.WriteLine();
+          System.Console.WriteLine("Press any key to continue");
+          System.Console.ReadKey();
 
         } while (!exit);
 
       }
+
+    }
+
+    static void SalesHistory()
+    {
+
+    }
+
+    static void OrderHistory()
+    {
 
     }
   }

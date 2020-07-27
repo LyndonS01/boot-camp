@@ -48,6 +48,14 @@ namespace PizzaStore.Client
       System.Console.WriteLine("Select 3 for Regular");
       System.Console.WriteLine();
     }
+
+    public static void ChooseCrust()
+    {
+      System.Console.WriteLine("Select 1 for Thin");
+      System.Console.WriteLine("Select 2 for Thick");
+      System.Console.WriteLine("Select 3 for Stuffed");
+      System.Console.WriteLine();
+    }
     public static void MgmtMenu()
     {
       System.Console.WriteLine("Select 1 for Sales History");

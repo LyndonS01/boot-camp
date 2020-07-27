@@ -17,16 +17,18 @@ namespace PizzaStore.Client
         string pizzaType = GetPizzaType(cart, toppings, ref exit);
 
         var pizzaSize = "";
+        var pizzaCrust = "";
         var toppings_list = "";
         if (pizzaType != "")
         {
           pizzaSize = GetPizzaSize(cart, ref exit);                     // Ask for the size of pizza
+          pizzaCrust = GetPizzaCrust(cart, ref exit);                   // Ask for the desired crust type
           toppings_list = String.Join(", ", toppings.ToArray());
           System.Console.WriteLine($"Pizza type is {pizzaType}, size = {pizzaSize}, toppings = {toppings_list}");
 
-          cart.CreatePizza(pizzaSize, "Stuffed", toppings);   // add the pizza to the order
+          cart.CreatePizza(pizzaSize, pizzaCrust, toppings);   // add the pizza to the order
 
-          System.Console.WriteLine($"We added a {pizzaSize} {pizzaType} pizza to your order");
+          System.Console.WriteLine($"We added a {pizzaSize}, {pizzaCrust}, {pizzaType} pizza to your order.\n");
         }
 
       }
@@ -155,6 +157,43 @@ static string GetPizzaSize(Order cart, ref bool exit)
 
   }
   return sizeSelected;
+}
+
+static string GetPizzaCrust(Order cart, ref bool exit)
+{
+  var exit1 = false;
+  var selection = 0;
+  var crustSelected = "";
+
+  while (!exit && !exit1)
+  {
+    Starter.ChooseCrust();
+
+    int.TryParse(Console.ReadLine(), out selection);
+
+    switch (selection)
+    {
+      case 1:
+        crustSelected = "Thin";
+        System.Console.WriteLine($"You chose {crustSelected}");
+        exit1 = true;
+        break;
+      case 2:
+        crustSelected = "Thick";
+        System.Console.WriteLine($"You chose {crustSelected}");
+        exit1 = true;
+        break;
+      case 3:
+        crustSelected = "Stuffed";
+        System.Console.WriteLine($"You chose {crustSelected}");
+        exit1 = true;
+        break;
+      default:
+        continue;
+    }
+
+  }
+  return crustSelected;
 }
 
 static void AddCustomToppings(List<string> toppings)
