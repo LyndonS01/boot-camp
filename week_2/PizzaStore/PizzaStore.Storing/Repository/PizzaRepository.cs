@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+// using System.Data.Entity;
 using domain = PizzaStore.Domain.Models;
 
 namespace PizzaStore.Storing.Repository
@@ -46,13 +48,17 @@ namespace PizzaStore.Storing.Repository
     public List<domain.Pizza> ReadAll()
     {
       var domainPizzaList = new List<domain.Pizza>();
+      var query = _db.Pizza.Include(t => t.Crust).Include(t => t.Size);
 
-      foreach (var item in _db.Pizza.ToList())
+      foreach (var item in query.ToList())
+      // foreach (var item in query.ToList())
+        
         domainPizzaList.Add(new domain.Pizza()
         {
           Name = item.PizzaName,
-          // Crust = item.Crust.CrustName,
-          // Size = item.Size.SizeName,
+          // new Pizza.Crust() { CrustName = item.CrustName },
+          Crust = item.Crust.CrustName,
+          Size = item.Size.SizeName,
           Price = item.PizzaPrice
           //          Toppings = new List<domain.Toppings>()
         });

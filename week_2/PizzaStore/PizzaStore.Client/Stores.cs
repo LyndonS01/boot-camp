@@ -89,6 +89,7 @@ namespace PizzaStore.Client
               {
                 System.Console.WriteLine(o.ToString());
               }
+            
             exit1 = true;
             break;
           case 1:   // Cheese

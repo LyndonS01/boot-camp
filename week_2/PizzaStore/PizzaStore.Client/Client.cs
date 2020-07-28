@@ -112,9 +112,9 @@ namespace PizzaStore.Client
               continue;
             case 6:
 
-          var repository = new PizzaRepository();
-          Order myOrder = cart;
-          repository.CreateOrderDb(myOrder);
+              // var repository = new PizzaRepository();
+              // Order myOrder = cart;
+              // repository.CreateOrderDb(myOrder);
 
               var fmw = new FileManager();
               fmw.Write(cart);
@@ -291,22 +291,6 @@ namespace PizzaStore.Client
         } while (!exit1);
         return chosen_topping;
       }
-
-      // static void CreatePizzaDb(ref PizzaStore.Domain.Models.Pizza pizza)
-      // {
-      //   repo.PizzaRepository.Create(pizza);
-
-      // }
-
-      // static void CreateOrderDb(Order order, string store, string user)
-      // {
-      //   // var p = order.Pizzas;
-
-      //   foreach (var pizza in order.Pizzas)
-      //   {
-      //     repo.PizzaRepository.Create(pizza);
-      //   }
-      // }
 
     }
 

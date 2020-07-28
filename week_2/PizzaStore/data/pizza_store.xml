@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Store>Location A</Store>
+  <User>lyndons</User>
   <Pizzas>
-    <Pizza>
-      <Size>Regular</Size>
-      <Crust>Thin</Crust>
-      <Name>Pepperoni</Name>
-      <Price>9.99</Price>
-      <Diameter>10</Diameter>
-      <Toppings>
-        <string>cheese</string>
-        <string>pepperoni</string>
-      </Toppings>
-    </Pizza>
     <Pizza>
       <Size>Large</Size>
       <Crust>Thick</Crust>
-      <Name>Custom</Name>
-      <Price>9.99</Price>
+      <Name>Pepperoni</Name>
+      <Price>8.0</Price>
       <Diameter>12</Diameter>
       <Toppings>
         <string>cheese</string>
-        <string>sausage</string>
-        <string>ham</string>
-        <string>bacon</string>
-        <string>mushrooms</string>
+        <string>pepperoni</string>
       </Toppings>
     </Pizza>
   </Pizzas>
