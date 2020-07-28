@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using PizzaStore.Domain.Models;
 using System.Linq;
+using PizzaStore.Storing.Repository;
+// using repo = PizzaStore.Storing.Repository;
 
 namespace PizzaStore.Client
 {
@@ -14,13 +16,13 @@ namespace PizzaStore.Client
       while (!exit)
       {
         List<string> toppings = new List<string>();
+        var pizzaPrice = 8.0m;                                          // fix it for now
 
-        string pizzaType = GetPizzaType(cart, toppings, ref exit);
+        string pizzaType = GetPizzaType(cart, toppings, pizzaPrice, ref exit);
 
         var pizzaSize = "";
         var pizzaCrust = "";
         var toppings_list = "";
-        var pizzaPrice = 0.0m;
 
         if (pizzaType != "")
         {
@@ -28,11 +30,15 @@ namespace PizzaStore.Client
           pizzaCrust = GetPizzaCrust(cart, ref exit);                   // Ask for the desired crust type
           toppings_list = String.Join(", ", toppings.ToArray());
 
-          pizzaPrice = 9.99m;                                             // fix it for now
+
 
           System.Console.WriteLine($"Pizza type is {pizzaType}, size = {pizzaSize}, toppings = {toppings_list}, price = {pizzaPrice}");
 
           cart.CreatePizza(pizzaType, pizzaSize, pizzaCrust, toppings, pizzaPrice);   // add the pizza to the order
+
+          var repository = new PizzaRepository();
+          Pizza lastPizza = cart.Pizzas.Last();
+          repository.Create(lastPizza);
 
           System.Console.WriteLine($"We added a {pizzaSize}, {pizzaCrust}, {pizzaType} pizza to your order.\n");
         }
@@ -51,7 +57,7 @@ namespace PizzaStore.Client
 
       }
 
-      static string GetPizzaType(Order cart, List<string> toppings, ref bool exit)
+      static string GetPizzaType(Order cart, List<string> toppings, decimal price, ref bool exit)
       {
         var exit1 = false;
         string typeSelected = "";
@@ -98,13 +104,18 @@ namespace PizzaStore.Client
               typeSelected = pizzaTypes[selection - 1];
               var toppings_list = "";
               toppings_list = String.Join(", ", toppings.ToArray());
+              price = 9.0m;           // fix it for now
               System.Console.WriteLine($"You chose {typeSelected} with {toppings_list}.");
               break;
             case 5:
               DisplayCart(cart);
               continue;
             case 6:
-              // PizzaStore.Domain.Models.Order.CreateOrder(cart);
+
+          var repository = new PizzaRepository();
+          Order myOrder = cart;
+          repository.CreateOrderDb(myOrder);
+
               var fmw = new FileManager();
               fmw.Write(cart);
               System.Console.WriteLine("Thank you for your order. Goodbye!");
@@ -280,6 +291,23 @@ namespace PizzaStore.Client
         } while (!exit1);
         return chosen_topping;
       }
+
+      // static void CreatePizzaDb(ref PizzaStore.Domain.Models.Pizza pizza)
+      // {
+      //   repo.PizzaRepository.Create(pizza);
+
+      // }
+
+      // static void CreateOrderDb(Order order, string store, string user)
+      // {
+      //   // var p = order.Pizzas;
+
+      //   foreach (var pizza in order.Pizzas)
+      //   {
+      //     repo.PizzaRepository.Create(pizza);
+      //   }
+      // }
+
     }
 
   }

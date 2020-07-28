@@ -9,7 +9,7 @@ namespace PizzaStore.Client
   {
     static void Main()
     {
-      TestDbConnection();
+      // TestDbConnection();
       Welcome();
     }
 

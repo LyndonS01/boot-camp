@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using PizzaStore.Domain.Models;
+using System.Linq;
+using PizzaStore.Storing.Repository;
 
 namespace PizzaStore.Client
 {
@@ -79,7 +81,14 @@ namespace PizzaStore.Client
         switch (selection)
         {
           case 0:   // All type
+              var repository = new PizzaRepository();      
+              var orderList = repository.ReadAll();      // reading all Pizzas for now
+                // System.Console.WriteLine(orderList);
 
+              foreach (var o in orderList)
+              {
+                System.Console.WriteLine(o.ToString());
+              }
             exit1 = true;
             break;
           case 1:   // Cheese
@@ -123,6 +132,7 @@ namespace PizzaStore.Client
           {
             case 1: // Order History by Store
                     // Prompt for Store Id
+
               exit1 = true;
               break;
             case 2: // Order History by User
