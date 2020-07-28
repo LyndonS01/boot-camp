@@ -2,20 +2,28 @@
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Pizzas>
     <Pizza>
-      <Size>Large</Size>
-      <Crust>Thick</Crust>
-      <Diameter>12</Diameter>
-      <Toppings>
-        <string>cheese</string>
-      </Toppings>
-    </Pizza>
-    <Pizza>
-      <Size>Family</Size>
+      <Size>Regular</Size>
       <Crust>Thin</Crust>
-      <Diameter>16</Diameter>
+      <Name>Pepperoni</Name>
+      <Price>9.99</Price>
+      <Diameter>10</Diameter>
       <Toppings>
         <string>cheese</string>
         <string>pepperoni</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Size>Large</Size>
+      <Crust>Thick</Crust>
+      <Name>Custom</Name>
+      <Price>9.99</Price>
+      <Diameter>12</Diameter>
+      <Toppings>
+        <string>cheese</string>
+        <string>sausage</string>
+        <string>ham</string>
+        <string>bacon</string>
+        <string>mushrooms</string>
       </Toppings>
     </Pizza>
   </Pizzas>
