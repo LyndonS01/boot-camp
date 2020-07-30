@@ -11,7 +11,9 @@ namespace PizzaStore.Client
     public static void Menu()
     {
       bool exit = false;
-
+ /*
+      add Store selection method here and store the StoreName in the Store object
+ */
       while (!exit)
       {
         do
@@ -78,18 +80,15 @@ namespace PizzaStore.Client
 
         int.TryParse(Console.ReadLine(), out selection);
 
+        var repository = new PizzaRepository();
+        var orderList = repository.ReadAll();      // reading all Pizzas for now
+
         switch (selection)
         {
-          case 0:   // All type
-              var repository = new PizzaRepository();      
-              var orderList = repository.ReadAll();      // reading all Pizzas for now
-                // System.Console.WriteLine(orderList);
 
-              foreach (var o in orderList)
-              {
-                System.Console.WriteLine(o.ToString());
-              }
-            
+          case 0:   // All types
+
+            ShowHistory(orderList, selection);
             exit1 = true;
             break;
           case 1:   // Cheese
@@ -111,7 +110,8 @@ namespace PizzaStore.Client
           default:
             continue;
         }
-
+        // System.Console.WriteLine();
+        // System.Console.WriteLine("Press any key to continue");
       }
       return typeSelected;
     }
@@ -153,6 +153,32 @@ namespace PizzaStore.Client
 
       }
       return selection;
+    }
+    static void ShowHistory(List<Pizza> results, int pizzaType)
+    {
+      System.Console.WriteLine("Summary of the Current Month's Sales");
+      System.Console.WriteLine("as of");
+      System.Console.WriteLine(DateTime.Now.ToString("MM/dd/yyyy"));
+      System.Console.WriteLine();
+
+      System.Console.WriteLine("Item No.  " + "Item Description                " + "Qty. " + "Price");
+      System.Console.WriteLine("--------------------------------------------------------\n");
+
+      var item = 1;
+      var totalPrice = 0m;
+      var totalQty = 0;
+      var qty = 1;
+
+      foreach (var o in results)
+      {
+        System.Console.WriteLine($"{item}  {o.Size}, {o.Crust} Crust, {o.Name} Pizza        {qty}  ${o.Price}");
+        totalQty += qty;
+        totalPrice += o.Price;
+        item++;
+      }
+
+      System.Console.WriteLine("--------------------------------------------------------");
+      System.Console.WriteLine($"TOTALS:                                  {totalQty}  ${totalPrice}");
     }
   }
 }

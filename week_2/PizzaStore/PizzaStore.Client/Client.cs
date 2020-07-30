@@ -13,6 +13,10 @@ namespace PizzaStore.Client
     {
       bool exit = false;
 
+ /*
+      add User & Store selection method here and store the UserName in the User and Store objects
+ */
+
       while (!exit)
       {
         List<string> toppings = new List<string>();
@@ -23,6 +27,7 @@ namespace PizzaStore.Client
         var pizzaSize = "";
         var pizzaCrust = "";
         var toppings_list = "";
+        var pizzaQty = 1;
 
         if (pizzaType != "")
         {
@@ -34,7 +39,7 @@ namespace PizzaStore.Client
 
           System.Console.WriteLine($"Pizza type is {pizzaType}, size = {pizzaSize}, toppings = {toppings_list}, price = {pizzaPrice}");
 
-          cart.CreatePizza(pizzaType, pizzaSize, pizzaCrust, toppings, pizzaPrice);   // add the pizza to the order
+          cart.CreatePizza(pizzaType, pizzaSize, pizzaCrust, toppings, pizzaQty, pizzaPrice);   // add the pizza to the order
 
           var repository = new PizzaRepository();
           Pizza lastPizza = cart.Pizzas.Last();

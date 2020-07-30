@@ -10,18 +10,18 @@ namespace PizzaStore.Domain.Models
   {
     public string Store { get; set; }
     public string User { get; set; }
-    public List<Pizza> Pizzas { get; }
+    public List<Pizza> Pizzas { get; set; }
 
-    public void CreatePizza(string name, string size, string crust, List<string> toppings, decimal price)
+    public void CreatePizza(string name, string size, string crust, List<string> toppings, int qty, decimal price)
     {
       
-      Pizzas.Add(new Pizza(name, size, crust, toppings, price));
+      Pizzas.Add(new Pizza(name, size, crust, toppings, qty, price));
     }
 
     public Order()
     {
-      Store = "Location A";
-      User = "lyndons";
+      Store = "";
+      User = "";
       Pizzas = new List<Pizza>();
     }
   }

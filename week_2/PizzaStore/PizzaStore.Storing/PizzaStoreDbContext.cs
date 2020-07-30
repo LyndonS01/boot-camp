@@ -29,7 +29,7 @@ namespace PizzaStore.Storing
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("server=localhost;database=PizzaStoreDb;user id=sa;password=Password12345");
+                optionsBuilder.UseSqlServer("server=revbc1.database.windows.net;database=PizzaStoreDb;user id=sqladmin;password=Fined00!");
             }
         }
 

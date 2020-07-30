@@ -27,24 +27,27 @@ namespace PizzaStore.Client
       int selection;
       int.TryParse(Console.ReadLine(), out selection);
 
+      var starter = new Starter();      // creates a new Order object
+      var user = new User();
+      var store = new Store();
+      
       switch (selection)
       {
         case 1:
-          var starter = new Starter();
-          var user = new User();
-          var store = new Store();
 
           try
           {
-            Client.Menu(starter.CreateOrder(user, store));
+            Client.Menu(starter.CreateOrder(user, store));  // creates User and Store objects containing one Order object each
           }
           catch (Exception ex)
           {
             System.Console.WriteLine(ex.Message);
           }
 
+                    
           break;
         case 2:
+
           try
           {
             Stores.Menu();
@@ -53,7 +56,7 @@ namespace PizzaStore.Client
           {
             System.Console.WriteLine(ex.Message);
           }
-
+                  
           break;
         default:
           break;

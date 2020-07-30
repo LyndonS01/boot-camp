@@ -21,6 +21,7 @@ namespace PizzaStore.Domain.Models
     public string Crust { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
+    public int Qty { get; set; }
     public const double _sizeFamily = 16.0;
     public const double _sizeLarge = 12.0;
     public const double _sizeRegular = 10.0;
@@ -39,7 +40,7 @@ namespace PizzaStore.Domain.Models
 
     // BEHAVIOR
     //constructors
-    public Pizza(string name, string size, string crust, List<string> toppings, decimal price)
+    public Pizza(string name, string size, string crust, List<string> toppings, int qty, decimal price)
     {
       Name = name;
       Sizes.Add("Regular", _sizeRegular);
@@ -49,6 +50,7 @@ namespace PizzaStore.Domain.Models
       Diameter = Sizes[size];
       Crust = crust;
       Toppings.AddRange(toppings);
+      Qty = qty;
       Price = price;
     }
 
@@ -57,6 +59,8 @@ namespace PizzaStore.Domain.Models
       Size = "";
       Crust = "";
       Diameter = 0.0;
+      Qty = 0;
+      Price = 0.0m;
       // intentionally empty
     }
 
@@ -96,7 +100,7 @@ namespace PizzaStore.Domain.Models
       //   sb.Append(t + ", ");
       // }
 
-      return $"{Size} ({Diameter} in.), {Name}, {Crust}, {Name} Pizza. Toppings incl.: {sb}";
+      return $"{Size} ({Diameter} in.), {Name}, {Crust}, {Name} Pizza. Toppings incl.: {sb}. Qty={Qty}, Unit Price=${Price}";
       // return $"{Size}, {Crust}, Pizza. Toppings incl.: {sb}";
     }
 
