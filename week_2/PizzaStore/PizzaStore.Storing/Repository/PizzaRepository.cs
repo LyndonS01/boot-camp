@@ -21,7 +21,16 @@ namespace PizzaStore.Storing.Repository
       newPizza.Crust.CrustName = pizza.Crust;
       newPizza.Size.SizeName = pizza.Size;
       newPizza.PizzaName = pizza.Name;
+      newPizza.Qty = pizza.Qty;
       newPizza.PizzaPrice = pizza.Price;
+
+      newPizza.PizzaTopping = new HashSet<PizzaTopping>();
+      foreach (var t in pizza.Toppings)
+      {
+        var newTopping = new Topping();
+        newTopping.ToppingName = t;
+        newPizza.PizzaTopping.Add(new PizzaTopping {Topping = newTopping, Pizza = newPizza});
+      };
 
       _db.Pizza.Add(newPizza);
       _db.SaveChanges();
@@ -30,6 +39,20 @@ namespace PizzaStore.Storing.Repository
     public void CreateOrderDb(domain.Order order)
     {
       var newOrder = new Orders();
+      newOrder.Store = new Stores();
+      newOrder.User = new Users();
+
+      newOrder.Store.StoreName = order.Store;
+      newOrder.User.UserName = order.User;
+
+      foreach (var p in order.Pizzas)
+      {
+        var newPizza = new Pizza();
+        newPizza.PizzaName = p.Name;
+        newPizza.Qty = p.Qty;
+        newPizza.PizzaPrice = p.Price;
+        newOrder.Pizza.Add(newPizza);
+      }
 
       _db.Orders.Add(newOrder);
       _db.SaveChanges();
@@ -59,7 +82,8 @@ namespace PizzaStore.Storing.Repository
           // new Pizza.Crust() { CrustName = item.CrustName },
           Crust = item.Crust.CrustName,
           Size = item.Size.SizeName,
-          Price = item.PizzaPrice
+          Price = item.PizzaPrice,
+          Qty = item.Qty
           //          Toppings = new List<domain.Toppings>()
         });
 

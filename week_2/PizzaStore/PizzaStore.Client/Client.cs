@@ -116,10 +116,8 @@ namespace PizzaStore.Client
               DisplayCart(cart);
               continue;
             case 6:
-
               // var repository = new PizzaRepository();
-              // Order myOrder = cart;
-              // repository.CreateOrderDb(myOrder);
+              // repository.CreateOrderDb(cart);
 
               var fmw = new FileManager();
               fmw.Write(cart);

@@ -30,6 +30,7 @@ create table Pizza.Pizza
   PizzaId int not null identity(1,1),
   CrustId int null,
   SizeId int null,
+  OrderId int null,
   PizzaName nvarchar(250) not null,
   Qty int not null default 1,
   PizzaPrice decimal(8,2) not null,
@@ -85,6 +86,9 @@ alter table Pizza.Pizza
   add constraint FK_Pizza_SizeId foreign key (SizeId) references Pizza.Size (SizeId);
 
 alter table Pizza.PizzaTopping
+  add constraint PK_Pizza_PizzaTopping_PizzaId primary key clustered (PizzaId, ToppingId);  
+
+alter table Pizza.PizzaTopping
   add constraint FK_Pizza_PizzaTopping_PizzaId foreign key (PizzaId) references Pizza.Pizza(PizzaId);
 
 alter table Pizza.PizzaTopping
@@ -94,14 +98,16 @@ alter table Pizza.PizzaTopping
 
 create table Pizza.Orders
 (
+  OrderId int not null identity(1,1),  
   StoreId int not null,
   UserId int not null,
   OrderDate datetime2(0) not null default getdate(),
   PizzaId int not null,
 --  Qty int not null default 1,
   Active bit not null default 1,
-  constraint PK_Pizza_Orders primary key clustered (StoreId, UserId, OrderDate)
+  constraint PK_Pizza_Orders primary key clustered (OrderId)
 );
+
 
 create table Pizza.Users
 (
@@ -127,25 +133,30 @@ alter table Pizza.Orders
 alter table Pizza.Orders
   add constraint FK_Pizza_PizzaOrders_UserId foreign key (UserId) references Pizza.Users (UserId); 
 
-alter table Pizza.Orders
-  add constraint FK_Pizza_PizzaOrders_PizzaId foreign key (PizzaId) references Pizza.Pizza (PizzaId);   
+alter table Pizza.Pizza
+  add constraint FK_Pizza_OrderId foreign key (OrderId) references Pizza.Orders (OrderId);  
 
 -- populate tables
 
   -- users
 
-insert into pizza.users (userid, username)
+insert into pizza.users (username)
 values
-(777, 'lyndons'),
-(778, 'johnd')
+('lyndons'),
+('johnd');
+
 
   -- stores
   
-insert into pizza.stores (storeid, storename)
+insert into pizza.stores (storename)
 values
-(201, 'Location A'),
-(202, 'Location B'),
-(203, 'Location C')
+('Location A'),
+('Location B'),
+('Location C')
+
+select 'PizzaStoreDB build done!'
+
+GO
 
   -- size
   
@@ -177,66 +188,6 @@ values
 ('bacon'),
 ('mushrooms')
 
-  -- pizza
-  
--- insert into pizza.pizza (pizzaid, crustid, sizeid, pizzaname, pizzaprice, datemodified, active)
--- values
--- (10000, 1000, 100, 'Cheese', 8.0, getdate(), 1),
--- (11000, 1000, 200, 'Cheese', 8.25, getdate(), 1),
--- (12000, 1000, 300, 'Cheese', 8.5, getdate(), 1),
--- (20000, 1100, 100, 'Pepperoni', 9.0, getdate(), 1),
--- (21000, 1100, 200, 'Pepperoni', 9.25, getdate(), 1),
--- (22000, 1100, 300, 'Pepperoni', 9.5, getdate(), 1),
--- (30000, 1200, 100, 'Hawaiian', 9.0, getdate(), 1),
--- (31000, 1200, 200, 'Hawaiian', 9.25, getdate(), 1),
--- (32000, 1200, 200, 'Hawaiian', 9.5, getdate(), 1)
-
-
-  -- pizzatopping
-  
--- insert into pizza.pizzatopping (pizzaid, toppingid, datemodified, active)
--- values
--- (10000, 100, getdate(), 1),
--- (11000, 100, getdate(), 1),
--- (12000, 100, getdate(), 1),
--- (10000, 200, getdate(), 1),
--- (11000, 200, getdate(), 1),
--- (12000, 200, getdate(), 1),
--- (20000, 100, getdate(), 1),
--- (21000, 100, getdate(), 1),
--- (22000, 100, getdate(), 1),
--- (20000, 300, getdate(), 1),
--- (21000, 300, getdate(), 1),
--- (22000, 300, getdate(), 1),
--- (30000, 100, getdate(), 1),
--- (31000, 100, getdate(), 1),
--- (32000, 100, getdate(), 1),
--- (30000, 600, getdate(), 1),
--- (31000, 600, getdate(), 1),
--- (32000, 600, getdate(), 1),
--- (30000, 700, getdate(), 1),
--- (31000, 700, getdate(), 1),
--- (32000, 700, getdate(), 1)
-
-  -- orders
-  
--- insert into pizza.orders (storeid, userid, pizzaid, orderdate, qty, active)
--- values
--- (201, 777, 12000, getdate(), 2, 1),
--- (202, 777, 14000, getdate(), 1, 1),
--- (203, 778, 11000, getdate(), 2, 1),
--- (203, 778, 17000, getdate(), 1, 1),
--- (203, 778, 15000, getdate(), 5, 1),
--- (203, 778, 17000, getdate(), 1, 1),
--- (203, 778, 16000, getdate(), 3, 1),
--- (203, 777, 17000, getdate(), 1, 1),
--- (203, 777, 11000, getdate(), 2, 1),
--- (203, 777, 15000, getdate(), 4, 1),
--- (203, 777, 10000, getdate(), 1, 1),
--- (203, 777, 18000, getdate(), 1, 1)
 GO
 
-select 'PizzaStoreDB build done!'
-
-GO
 

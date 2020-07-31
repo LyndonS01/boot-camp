@@ -54,7 +54,8 @@ namespace PizzaStore.Storing
 
             modelBuilder.Entity<Orders>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.OrderId)
+                    .HasName("PK_Pizza_Orders");
 
                 entity.ToTable("Orders", "Pizza");
 
@@ -66,16 +67,14 @@ namespace PizzaStore.Storing
                     .HasColumnType("datetime2(0)")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Qty).HasDefaultValueSql("((1))");
-
                 entity.HasOne(d => d.Store)
-                    .WithMany()
+                    .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StoreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Pizza_PizzaOrders_StoreId");
 
                 entity.HasOne(d => d.User)
-                    .WithMany()
+                    .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Pizza_PizzaOrders_UserId");
@@ -99,10 +98,17 @@ namespace PizzaStore.Storing
 
                 entity.Property(e => e.PizzaPrice).HasColumnType("decimal(8, 2)");
 
+                entity.Property(e => e.Qty).HasDefaultValueSql("((1))");
+
                 entity.HasOne(d => d.Crust)
                     .WithMany(p => p.Pizza)
                     .HasForeignKey(d => d.CrustId)
                     .HasConstraintName("FK_Pizza_CrustId");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.Pizza)
+                    .HasForeignKey(d => d.OrderId)
+                    .HasConstraintName("FK_Pizza_OrderId");
 
                 entity.HasOne(d => d.Size)
                     .WithMany(p => p.Pizza)
@@ -112,9 +118,12 @@ namespace PizzaStore.Storing
 
             modelBuilder.Entity<PizzaTopping>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.PizzaId, e.ToppingId })
+                    .HasName("PK_Pizza_PizzaTopping_PizzaId");
 
                 entity.ToTable("PizzaTopping", "Pizza");
+
+                entity.Property(e => e.ToppingId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Active)
                     .IsRequired()
@@ -124,16 +133,14 @@ namespace PizzaStore.Storing
                     .HasColumnType("datetime2(0)")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.ToppingId).ValueGeneratedOnAdd();
-
                 entity.HasOne(d => d.Pizza)
-                    .WithMany()
+                    .WithMany(p => p.PizzaTopping)
                     .HasForeignKey(d => d.PizzaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Pizza_PizzaTopping_PizzaId");
 
                 entity.HasOne(d => d.Topping)
-                    .WithMany()
+                    .WithMany(p => p.PizzaTopping)
                     .HasForeignKey(d => d.ToppingId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Pizza_PizzaTopping_ToppingId");
@@ -162,8 +169,6 @@ namespace PizzaStore.Storing
                     .HasName("PK_Pizza_Stores");
 
                 entity.ToTable("Stores", "Pizza");
-
-                entity.Property(e => e.StoreId).ValueGeneratedNever();
 
                 entity.Property(e => e.Active)
                     .IsRequired()
@@ -201,8 +206,6 @@ namespace PizzaStore.Storing
                     .HasName("PK_Pizza_Users");
 
                 entity.ToTable("Users", "Pizza");
-
-                entity.Property(e => e.UserId).ValueGeneratedNever();
 
                 entity.Property(e => e.Active)
                     .IsRequired()

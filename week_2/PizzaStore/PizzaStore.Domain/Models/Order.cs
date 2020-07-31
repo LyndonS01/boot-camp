@@ -24,5 +24,14 @@ namespace PizzaStore.Domain.Models
       User = "";
       Pizzas = new List<Pizza>();
     }
+    public Order(string storename, string username)
+    {
+      // Store = storename;
+      // User = username;
+      Store = "Location B";
+      User = "lyndons";
+      Pizzas = new List<Pizza>();
+    }
+
   }
 }
