@@ -2,22 +2,39 @@
 
 @* HTML WAY *@
 <form action="/order/placeorder" method="post">
-  @foreach (var crust in @Model.Crusts)
-  {
-    <input type="radio" name="crust" value="@crust.Name">
-  }
+  
+  <fieldset id="crust">
+    <legend>Choose your crust:</legend>
+    @foreach (var crust in @Model.Crusts)
+      {
+        <input type="radio" name="crust" value="@crust.Name"/>@crust.Name<br />
+      }
+  </fieldset>
+  <br />
 
+  <label for="size">Choose your size:</label>
   <select name="size" id="">
     @foreach (var size in @Model.Sizes)
     {
       <option value="@size.Name">@size.Name</option>
     }
   </select>
+  <br />
 
-  @foreach (var topping in @Model.Toppings)
+  @* @foreach (var topping in @Model.Toppings)
   {
-    <input type="checkbox" name="selectedtoppings" value="@topping.Name">
+    <input type="checkbox" name="selectedtoppings" value="@topping.Name"/>@topping.Name<br />
   }
+  <br /> *@
+
+  <fieldset id="selectedtoppings">
+  <legend>Choose your Toppings:</legend>
+  @foreach (var topping in @Model.Toppings)
+    {
+      <input type="checkbox" name="selectedtoppings" value="@topping.Name"/>@topping.Name<br />
+    }
+  </fieldset>
+  <br />
 
   <input type="submit" value="place order">
   <button type="submit">place order</button>
