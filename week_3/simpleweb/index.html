@@ -1,0 +1,102 @@
+<!doctype html>
+
+html is a tree-like structure, each node representing an element = DOM, document object model
+
+<html lang="es">
+  <head>
+    <!-- base, meta, link, style, title, script -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="main.css">
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <!-- block element = width of the element would equal the width of the viewport -->
+    <header>
+      <h1>PizzaBox</h1>
+      <nav>
+        <a href="" id="notify">pizzas</a>
+        <a href="" id="notify">drinks</a>
+        <a href="">about us</a>
+      </nav>
+    </header> 
+
+    <section></section>
+    <section></section>
+    <div></div>
+    <section></section>
+
+    <main>
+      <section>
+        <header>
+          <h2>featured pizzas</h2>
+        </header>
+        <div>
+          <figure itemscope itemtype="https://schema.org/Thing">
+            <img itemprop="image" src="http://placecorgi.com/250" alt="a small corgi dog">
+            <figcaption itemprop="description">famous quattro cheese pizza</figcaption>
+          </figure>
+          <figure>
+            <img src="http://placecorgi.com/250" alt="a small corgi dog">
+            <figcaption>new smoked prosciutto pizza</figcaption>
+          </figure>
+          <figure>
+            <img src="http://placecorgi.com/250" alt="a small corgi dog">
+            <figcaption>classic hawaiian-style pizza</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2 class="banner">special coupons</h2>
+        </header>
+
+        <section>
+          <header>
+            <h3>new customers</h3>
+          </header>
+          <ul>
+            <li>buy 1 large get 2 small cheese free</li>
+            <li>get 10% off for any order of 50%</li>
+          </ul>
+        </section>
+
+        <section>
+          <header>
+            <h3>college students</h3>
+          </header>
+          <ul>
+            <li>buy 1 large get 1 free every tuesday</li>
+            <li>half price on many medium pizza on thursdays</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <p>level 1</p>
+        <header>
+          <h2 class="banner">lastest news</h2>
+        </header>
+
+        <article>
+          <header>
+            <h3>app released</h3>
+          </header>
+
+          <p>level 2</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quis? Adipisci laborum possimus quo totam alias in! Labore et vitae velit dignissimos soluta, itaque quos hic voluptate, explicabo sed debitis?</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; 2020 fred belotte</small>
+    </footer>
+  </body>
+</html>

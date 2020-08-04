@@ -1,0 +1,77 @@
+BASIC SELECTORS
+
+/* wildcard or omni selector */
+* {
+  color: blue;
+  color: #0000ff;
+  color: rgba(0,0,255,0.5);
+  color: hsla(225, 100, 25);
+}
+
+/* tag  */
+h1 {
+  color: #ff0000;
+}
+
+/* class */
+*.banner {
+  color: #00ff00;
+}
+
+/* tag-class */
+h2.banner {
+  color: #ff00ff;
+}
+
+/* id */
+#notify {
+  color: #00ffff;
+}
+
+/* COMPOUND SELECTORS */
+/* ancestor-descendant */
+section p {
+  color: #ff0000;
+}
+
+/* parent-child */
+section > p {
+  color: #00ff00 !important;
+}
+
+/* adjecent sibling */
+section + section {
+ color: yellow;
+}
+
+/* any sibling */
+section ~ section {
+  color: orange;
+}
+
+/* PSEUDO CLASS */
+h1:hover {
+  color: tomato;
+}
+
+a:link {
+  color: magenta;
+}
+
+:active {
+
+}
+
+:blur {
+
+}
+
+:focus {
+
+}
+
+/* nth-type , nth-child, pseudo-element */
+
+/* (0,0,0,0) 1 = tag, 10 = class, 100 = id, 1000 = !important specificity guide */
+
+
