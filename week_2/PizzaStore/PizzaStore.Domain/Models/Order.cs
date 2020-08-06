@@ -29,7 +29,7 @@ namespace PizzaStore.Domain.Models
       // Store = storename;
       // User = username;
       Store = "Location B";
-      User = "lyndons";
+      User = "fredb";
       Pizzas = new List<Pizza>();
     }
 
