@@ -6,5 +6,5 @@
 
 ## how can you contribute
 
-## license or terms of agreement
+## license or terms of agreemen
 
