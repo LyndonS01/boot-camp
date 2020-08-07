@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/dotnet/core/sdk
+WORKDIR /app
+COPY . .
+# from the path to the physical machine to the image environment
+CMD [ "dotnet", "run", "-p", "Devops.Client/Devops.Client.csproj" ]
